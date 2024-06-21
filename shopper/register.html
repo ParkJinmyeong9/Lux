@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Lux</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 부트스트랩 -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="themes/css/bootstrappage.css" rel="stylesheet" />
+
+<!-- 글로벌 스타일 -->
+<link href="themes/css/flexslider.css" rel="stylesheet" />
+<link href="themes/css/main.css" rel="stylesheet" />
+
+<!-- 스크립트 -->
+<script src="themes/js/jquery-1.7.2.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="themes/js/superfish.js"></script>
+<script src="themes/js/jquery.scrolltotop.js"></script>
+</head>
+<body>
+	<div id="top-bar" class="container">
+		<div class="row">
+			<div class="span4">
+				<form method="POST" class="search_form">
+					<input type="text" class="input-block-level search-query"
+						Placeholder="예: 티셔츠">
+				</form>
+			</div>
+			<div class="span8">
+				<div class="account pull-right">
+					<ul class="user-menu">
+						<li><a href="#">내 계정</a></li>
+						<li><a href="cart.html">장바구니</a></li>
+						<li><a href="checkout.html">결제하기</a></li>
+						<li><a href="login.jsp">로그인</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="wrapper" class="container">
+		<section class="navbar main-menu">
+			<div class="navbar-inner main-menu">
+				<a href="index.html" class="logo pull-left"><img
+					src="themes/images/logo.png" class="site_logo" alt=""></a>
+				<nav id="menu" class="pull-right">
+					<ul>
+						<li><a href="./products.html">여성</a>
+							<ul>
+								<li><a href="./products.html">라키니아 니브</a></li>
+								<li><a href="./products.html">몰레스티에 획득</a></li>
+								<li><a href="./products.html">바리우스 푸루스</a></li>
+							</ul></li>
+						<li><a href="./products.html">남성</a></li>
+						<li><a href="./products.html">스포츠</a>
+							<ul>
+								<li><a href="./products.html">선물 및 기술</a></li>
+								<li><a href="./products.html">넥타이 및 모자</a></li>
+								<li><a href="./products.html">추운 날씨</a></li>
+							</ul></li>
+						<li><a href="./products.html">핸드백</a></li>
+						<li><a href="./products.html">베스트셀러</a></li>
+						<li><a href="./products.html">탑셀러</a></li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+		<section class="header_text sub">
+			<img class="pageBanner" src="themes/images/pageBanner.png" alt="새 제품">
+			<h4>
+				<span>회원가입</span>
+			</h4>
+		</section>
+		<section class="main-content">
+			<div class="row">
+				<div class="span12">
+					<div class="center">
+						<h4 class="title">
+							<span class="text"><strong>회원가입</strong></span>
+						</h4>
+						<form action="register" method="post" class="form-stacked"
+							onsubmit="return validateForm()">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label" for="username">아이디</label>
+									<div class="controls">
+										<input type="text" placeholder="아이디를 입력하세요" id="username"
+											name="username" class="input-xlarge" maxlength="12"
+											pattern="[A-Za-z0-9]+" required>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="password">비밀번호</label>
+									<div class="controls">
+										<input type="password" placeholder="비밀번호를 입력하세요"
+											name="password" id="password" class="input-xlarge"
+											maxlength="14" required>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">비밀번호 확인</label>
+									<div class="controls">
+										<input type="password" placeholder="비밀번호를 다시 입력하세요"
+											name="confirmPassword" id="confirmPassword"
+											class="input-xlarge" required>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="fullname">이름</label>
+									<div class="controls">
+										<input type="text" placeholder="이름을 입력하세요" name="fullname"
+											class="input-xlarge" pattern="[가-힣]{1,6}" required>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="gender">성별</label>
+									<div class="controls">
+										<select name="gender" class="input-xlarge">
+											<option value="M">남성</option>
+											<option value="F">여성</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-group">
+										<label class="control-label">이메일</label>
+										<div class="controls">
+											<!-- 여기에 name="email" 속성을 추가합니다. -->
+											<input type="email" placeholder="이메일을 입력하세요" name="email"
+												class="input-xlarge">
+										</div>
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="birthdate">생년월일</label>
+									<div class="controls">
+										<input type="date" name="birthdate" class="input-xlarge">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label">전화번호</label>
+									<div class="controls">
+										<input type="tel" placeholder="예: 010-1234-5678"
+											name="phoneNumber" class="input-xlarge"
+											pattern="\d{3}-\d{3,4}-\d{4}" required>
+									</div>
+								</div>
+								<div class="action">
+									<input tabindex="3" class="btn btn-inverse large" type="submit"
+										value="가입하기">
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="footer-bar">
+			<div class="row">
+				<div class="span3">
+					<h4>내비게이션</h4>
+					<ul class="nav">
+						<li><a href="./index.html">홈페이지</a></li>
+						<li><a href="./about.html">고객센터</a></li>
+						<li><a href="./contact.html">연락처</a></li>
+						<li><a href="./cart.html">장바구니</a></li>
+						<li><a href="./login.jsp">로그인</a></li>
+					</ul>
+				</div>
+				<div class="span4">
+					<h4>내 계정</h4>
+					<ul class="nav">
+						<li><a href="#">내 계정</a></li>
+						<li><a href="#">주문 내역</a></li>
+						<li><a href="#">위시리스트</a></li>
+						<li><a href="#">뉴스레터</a></li>
+					</ul>
+				</div>
+				<div class="span5">
+					<p class="logo">
+						<img src="themes/images/logo.png" class="site_logo" alt="">
+					</p>
+					<p>로렘 입숨은 단순히 인쇄 및 조판 산업의 더미 텍스트입니다. 로렘 입숨은 업계의 표준 더미 텍스트였습니다.</p>
+					<br /> <span class="social_icons"> <a class="facebook"
+						href="#">페이스북</a> <a class="twitter" href="#">트위터</a> <a
+						class="skype" href="#">스카이프</a> <a class="vimeo" href="#">비메오</a>
+					</span>
+				</div>
+			</div>
+		</section>
+		<section id="copyright">
+			<span></span>
+		</section>
+	</div>
+	<script src="themes/js/common.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#checkout').click(function(e) {
+				document.location.href = "checkout.html";
+			})
+		});
+	</script>
+	<script>
+		function validateForm() {
+			var username = document.getElementById('username').value;
+			if (!/^[A-Za-z0-9]{5,}$/.test(username)) {
+				alert("아이디는 영문자와 숫자를 포함하여 5자리 이상이어야 합니다.");
+				return false;
+			}
+
+			var password = document.getElementById('password').value;
+			if (password.length < 8) {
+				alert("비밀번호는 최소 8자리 이상이어야 합니다.");
+				document.getElementById('password').style.borderColor = "red";
+				document.getElementById('confirmPassword').style.borderColor = "red";
+				return false;
+			}
+
+			var confirmPassword = document.getElementById('confirmPassword').value;
+			if (password !== confirmPassword) {
+				alert("비밀번호가 일치하지 않습니다.");
+				document.getElementById('password').style.borderColor = "red";
+				document.getElementById('confirmPassword').style.borderColor = "red";
+				return false;
+			} else {
+				document.getElementById('password').style.borderColor = "initial";
+				document.getElementById('confirmPassword').style.borderColor = "initial";
+			}
+
+			var fullname = document.querySelector('input[name="fullname"]').value;
+			if (!/^[가-힣]{2,6}$/.test(fullname)) {
+				alert("이름은 한글 2자리 이상, 최대 6글자까지 입력 가능합니다.");
+				return false;
+			}
+
+			return true; // 모든 검증을 통과한 경우
+		}
+	</script>
+</html>

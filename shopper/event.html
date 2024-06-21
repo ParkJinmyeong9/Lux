@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roulette Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 추가적인 인라인 스타일이 필요하다면 여기에 작성 */
+    </style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+  var rolLength = 6; // 룰렛에 있는 항목의 수
+  var setNum; // 랜덤으로 설정된 숫자를 저장하는 변수
+  var hiddenInput = document.createElement("input");
+  hiddenInput.className = "hidden-input";
+
+  const rRandom = () => {
+    var min = Math.ceil(0);
+    var max = Math.floor(rolLength - 1);
+    return Math.floor(Math.random() * (max - min)) + min; // 0과 룰렛 길이 -1 사이의 랜덤 숫자 반환
+  };
+
+  const rRotate = () => {
+    var panel = document.querySelector(".rouletter-wacu");
+    var btn = document.querySelector(".rouletter-btn");
+    var deg = []; // 각 항목의 각도를 계산해서 저장할 배열
+    for (var i = 1, len = rolLength; i <= len; i++) {
+      deg.push((360 / len) * i); // 360도를 항목 수로 나눈 각도를 배열에 저장
+    }
+
+    var num = 0; // 회전 횟수를 저장하는 변수
+    document.body.append(hiddenInput);
+    setNum = hiddenInput.value = rRandom(); // 랜덤 숫자 설정
+
+    var ani = setInterval(() => {
+      num++; // 회전 횟수 증가
+      panel.style.transform = "rotate(" + 360 * num + "deg)"; // 회전
+      btn.disabled = true; // 시작 버튼 비활성화
+
+      if (num === 50) { // 50번 회전 후
+        clearInterval(ani); // 인터벌 종료
+        panel.style.transform = "rotate(" + deg[setNum] + "deg)"; // 최종 각도 설정
+      }
+    }, 50);
+  };
+
+  const rLayerPopup = (num) => {
+    switch (num) {
+      case 1:
+        alert("당첨!! 아메리카노 쿠폰 당첨!");
+        break;
+      case 3:
+        alert("당첨!! 영화 티켓 당첨!");
+        break;
+      case 5:
+        alert("당첨!! CU 3,000원 상품권 당첨!");
+        break;
+      default:
+        alert("꽝! 다음 기회에!");
+    }
+  };
+
+  const rReset = (ele) => {
+    setTimeout(() => {
+      ele.disabled = false; // 버튼 활성화
+      rLayerPopup(setNum); // 당첨 팝업
+      hiddenInput.remove(); // 숨겨진 입력 필드 제거
+    }, 5500); // 5.5초 후 실행
+  };
+
+  document.addEventListener("click", function (e) {
+    var target = e.target;
+    if (target.tagName === "BUTTON") {
+      rRotate(); // 회전 시작
+      rReset(target); // 리셋
+    }
+  });
+
+  document.getElementById("app").innerHTML = `
+  <div class="rouletter">
+      <div class="rouletter-bg">
+          <div class="rouletter-wacu"></div>
+      </div>
+      <div class="rouletter-arrow"></div>
+      <button class="rouletter-btn">start</button>
+  </div>
+  `;
+</script>
+</body>
+</html>
